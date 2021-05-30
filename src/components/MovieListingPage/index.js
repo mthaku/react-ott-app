@@ -9,10 +9,10 @@ const MovieListingPage = (props) => {
   return (
     <Fragment>
       <div className="w-full pr-1 pl-1 md:pr-5 md:pl-5">
-        <div className="flex text-xl font-light mt-4 ml-2 mb-4 text-left text-white">
+        <div className="flex text-2xl font-bold mt-4 ml-2 mb-4 text-left text-white">
           <Link to="/">
             {" "}
-            <img src={`../images/Back.png`} alt="" className="h-6 mr-2" />
+            <img src={`../images/Back.png`} alt="" className="h-6 mr-2 mt-1" />
           </Link>
           {title}
         </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ScrollableMenu = ({ list, title }) => {
   return (
     <div className=" mr-2 ml-2 md:mr-7 md:ml-7 mb-10">
-      <div className="text-xl font-light mt-4 mb-4 text-left text-white">
+      <div className="text-2xl font-bold mt-4 mb-4 text-left text-white">
         <Link
           to={{
             pathname: `/${title}`,
