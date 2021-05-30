@@ -1,25 +1,24 @@
-import React, { Fragment } from "react";
-import useFetch from "../CustomHooks/useFetch";
+import React, { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
 
 import ImageCard from "../Image/ImageCard";
 import ScrollableMenu from "../ScrollableMenu";
+import { itemsFetchData } from "../../redux-store/actions/items";
 
-const Home = () => {
-
-  const { data: page1, title: title1 } = useFetch({
-    url: "../API/CONTENTLISTINGPAGE-PAGE1.json",
-    method: "GET"
-  });
-
-  const { data: page2, title: title2 } = useFetch({
-    url: "../API/CONTENTLISTINGPAGE-PAGE2.json",
-    method: "GET"
-  });
-
-  const { data: page3, title: title3 } = useFetch({
-    url: "../API/CONTENTLISTINGPAGE-PAGE3.json",
-    method: "GET"
-  });
+const Home = ({
+  page1Data,
+  page2Data,
+  page3Data,
+  title1,
+  title2,
+  title3,
+  itemsFetchData
+}) => {
+  useEffect(() => {
+    itemsFetchData("../API/CONTENTLISTINGPAGE-PAGE1.json", "GET", "PAGE1_DATA");
+    itemsFetchData("../API/CONTENTLISTINGPAGE-PAGE2.json", "GET", "PAGE2_DATA");
+    itemsFetchData("../API/CONTENTLISTINGPAGE-PAGE3.json", "GET", "PAGE3_DATA");
+  }, [itemsFetchData]);
 
   const imageCard = (data) => {
     return data.map((item, index) => {
@@ -35,18 +34,35 @@ const Home = () => {
 
   return (
     <Fragment>
-      {/* <div className="w-full pr-1 pl-1 md:pr-5 md:pl-5">
-        <div className=" bg-gray-900 grid gap-3 grid-cols-3 mx-auto mr-3 ml-3 md:grid-cols-5 md:gap-8">
-          {imageCard()}
-        </div>
-      </div> */}
-      <ScrollableMenu list={imageCard(page1)} title={title1} />
-      <ScrollableMenu list={imageCard(page2)} title={title2} />
-      <ScrollableMenu list={imageCard(page3)} title={title3} />
-
-      {/* <div className="horizontal-scroll grid gap-3  mx-auto pr-4 pl-4 md:gap-8 pr-1 pl-1 md:pr-6 md:pl-6 mt-4">{imageCard()}</div> */}
+      <ScrollableMenu
+        list={imageCard(page1Data)}
+        title={title1}
+        pageData={page1Data}
+      />
+      <ScrollableMenu
+        list={imageCard(page2Data)}
+        title={title2}
+        pageData={page2Data}
+      />
+      <ScrollableMenu
+        list={imageCard(page3Data)}
+        title={title3}
+        pageData={page3Data}
+      />
     </Fragment>
   );
 };
 
-export default Home;
+const mapStateToProps = ({ items }) => {
+  const { page1Data, page2Data, page3Data, title1, title2, title3 } = items;
+  return {
+    page1Data,
+    page2Data,
+    page3Data,
+    title1,
+    title2,
+    title3
+  };
+};
+
+export default connect(mapStateToProps, { itemsFetchData })(Home);

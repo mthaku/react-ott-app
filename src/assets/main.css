@@ -29833,6 +29833,13 @@ body {
   }
 }
 
+@media (max-width: 500px) {
+  .image-card img {
+    width: 110px;
+    height: 165px;
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

@@ -14,21 +14,19 @@ const ImageCard = ({ imageUrl, imageText }) => {
   }, []);
 
   return (
-    // <div className="bg-auto mb-8">
-    <div className="overflow-hidden">
+    <div className="overflow-hidden image-card">
       {showImage ? (
         <img
           src={`../images/${imageUrl || missingPosterUrl}`}
+          loading="lazy"
           alt={imageText}
           onError={(e) => e.target.src = `../images/${missingPosterUrl}`}
           className="w-full"
         />
       ) : (
-        <img
+        <div
           ref={placeHolderRef}
-          src={`../images/${missingPosterUrl}`}
-          alt={imageText}
-          className="w-full"
+          className="w-full h-40"
         />
       )}
       <div className="text-md opacity-75 font-light mt-2 text-left text-white">

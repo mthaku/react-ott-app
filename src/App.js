@@ -1,14 +1,16 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/Home";
-import MovieListingPage from "./components/MovieListingPage";
+const Home = React.lazy(() => import("./components/Home"));
+const MovieListingPage = React.lazy(() => import("./components/MovieListingPage"));
 
 const App = () => {
   return (
     <div>
+      <Suspense fallback={<div>Loading...</div>}>
       <img
         src={`../images/nav_bar.png`}
         alt=""
+        loading="lazy"
         className="w-full sticky top-0 h-24"
       />
 
@@ -20,6 +22,7 @@ const App = () => {
           <Route path="/:title" exact={true} component={MovieListingPage} />
         </Switch>
       </Router>
+      </Suspense>
     </div>
   );
 };
