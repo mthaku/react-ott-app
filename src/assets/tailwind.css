@@ -1,0 +1,32 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --gutter: 20px;
+}
+
+body {
+  @apply bg-gray-900;
+}
+
+.horizontal-scroll {
+  display: grid;
+  grid-gap: calc(var(--gutter) / 2);
+  grid-template-columns: repeat(200, calc(20% - var(--gutter) * 2));
+  grid-template-rows: minmax(50px, 1fr);
+
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+}
+
+.horizontal-scroll::before,
+.horizontal-scroll::after {
+  content: ‘’;
+}
+
+@media (max-width: 768px) {
+  .horizontal-scroll {
+    grid-template-columns: repeat(200, calc(42% - var(--gutter) * 2));
+  }
+}
