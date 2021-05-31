@@ -2,11 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+##Features implemented.
+ 1. Home Page with 3 scrollable menus.
+ 2. Movie Listing Page which appears on click of Movie Genre name on Home Page.
+ 3. Search Result Dropdown.
+ 4. Lazy Loading with the help of intersecction observer for performance optimization.
+ 5. Search Result optimization by using debouncing.
+
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm install`
+
+To run a project use below command 
+
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
