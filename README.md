@@ -2,7 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-##Features implemented.
+**##Features implemented.
+**
  1. Home Page with 3 scrollable menus.
  2. Movie Listing Page which appears on click of Movie Genre name on Home Page.
  3. Search Result Dropdown.
