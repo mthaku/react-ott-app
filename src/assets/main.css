@@ -29827,13 +29827,68 @@ body {
   scrollbar-width: none; /* Firefox */
 }
 
+.bg-img {
+  /* The image used */
+  background-image: url("nav_bar.png");
+  min-height: 100px;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* Needed to position the navbar */
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.search-dropdown-top {
+  border-top: 1px solid #008fff;
+  top: 66px;
+}
+
+.height-dropdown {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+.image-dimensions {
+  height: 120px;
+  width: 120px;
+}
+
+.search-list {
+  display: flex;
+  padding: 15px 10px;
+  background-color: rgba(17, 24, 39, 1);
+  margin-bottom: 5px;
+}
+
+.search-text {
+  margin: 20px 0 0 20px;
+}
+
 @media (max-width: 768px) {
   .horizontal-scroll {
     grid-template-columns: repeat(200, calc(42% - var(--gutter) * 2));
   }
+
+  .height-dropdown {
+    max-height: 40vh;
+    overflow-y: scroll;
+  }
+
+  .image-dimensions {
+    height: 80px;
+    width: 80px;
+  }
 }
 
 @media (max-width: 500px) {
+  .image-dimensions {
+    height: 80px !important;
+    width: 80px !important;
+  }
+
   .image-card img {
     width: 110px;
     height: 165px;

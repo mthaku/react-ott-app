@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ScrollableMenu = ({ list, title, pageData }) => {
+
   return (
     <div className=" mr-2 ml-2 md:mr-7 md:ml-7 mb-10">
       <div className="text-2xl font-bold mt-4 mb-4 text-left text-white">
@@ -20,5 +21,10 @@ const ScrollableMenu = ({ list, title, pageData }) => {
     </div>
   );
 };
+const moviePropsAreEqual = (prevMovie, nextMovie) => {
+  return JSON.parse(JSON.stringify(prevMovie.pageData)) === JSON.parse(JSON.stringify(nextMovie.pageData));
+}
 
-export default ScrollableMenu;
+const MemoizedScrollableMenu = React.memo(ScrollableMenu, moviePropsAreEqual);
+
+export default MemoizedScrollableMenu;
