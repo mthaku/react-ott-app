@@ -10,6 +10,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  4. Lazy Loading with the help of intersecction observer for performance optimization.
  5. Search Result optimization by using debouncing.
 
+### Demo Link:
+
+https://react-ott-app.netlify.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
