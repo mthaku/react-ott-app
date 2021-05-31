@@ -9,6 +9,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  3. Search Result Dropdown.
  4. Lazy Loading with the help of intersecction observer for performance optimization.
  5. Search Result optimization by using debouncing.
+ 6. Used Redux Thunk for state management
+ 7. UI is built using tailwind
 
 ### Demo Link:
 
