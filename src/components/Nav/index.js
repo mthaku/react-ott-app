@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import ImageCard from "../Image/ImageCard";
+
+import { setSearchResults } from "../../redux-store/actions/items";
 import { debounce } from "../../helper";
 
-const Nav = ({ page1Data, page2Data, page3Data }) => {
-  const [searchResult, setSearchResult] = useState([]);
+const Nav = ({ page1Data, page2Data, page3Data, setSearchResults }) => {
   const [input, setInput] = useState("");
 
   const onSearch = (inputStr) => {
@@ -14,9 +14,9 @@ const Nav = ({ page1Data, page2Data, page3Data }) => {
       data = [...page1Data, ...page2Data, ...page3Data].filter((item) => {
         return item.name.toLowerCase().includes(inputStr.toLowerCase());
       });
+      setSearchResults(data);
     }
-
-    setSearchResult(data);
+    else setSearchResults([]);
   };
 
   return (
@@ -31,7 +31,7 @@ const Nav = ({ page1Data, page2Data, page3Data }) => {
               value={input}
               onChange={(e) => debounce(onSearch(e.target.value), 500)}
               onBlur={() => {
-                setSearchResult([]);
+                setSearchResults([]);
                 setInput("");
               }}
             />
@@ -51,9 +51,9 @@ const Nav = ({ page1Data, page2Data, page3Data }) => {
             </div>
           </div>
         </div>
-
+{/* 
         {searchResult.length && (
-          <div className="flex md:justify-end justify-center items-center mr-6 md:mr-7 z-10 absolute right-0 search-dropdown-top">
+          <div className="flex md:justify-end justify-center items-center mr-2 md:mr-7 z-10 absolute right-0 search-dropdown-top">
             <div className="h-96 w-80 md:w-96 pr-5 pl-5 z-3 focus:shadow focus:outline-none bg-gray-900 bg-opacity-95 shadow-lg text-white height-dropdown ">
               {searchResult &&
                 searchResult.map((item, index) => {
@@ -68,7 +68,7 @@ const Nav = ({ page1Data, page2Data, page3Data }) => {
                 })}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </header>
   );
@@ -82,4 +82,4 @@ const mapStateToProps = ({ items }) => {
   };
 };
 
-export default connect(mapStateToProps, {})(Nav);
+export default connect(mapStateToProps, { setSearchResults})(Nav);
