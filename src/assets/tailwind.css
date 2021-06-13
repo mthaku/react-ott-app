@@ -56,11 +56,11 @@ body {
 }
 
 .search-dropdown-top {
-  border-top: 1px solid #008fff;
   top: 66px;
 }
 
 .height-dropdown {
+  border-top: 1px solid #008fff;
   max-height: 60vh;
   overflow-y: scroll;
 }
@@ -79,6 +79,10 @@ body {
 
 .search-text {
   margin: 20px 0 0 20px;
+}
+
+.image-card img {
+  aspect-ratio: 3/4;
 }
 
 @media (max-width: 768px) {
