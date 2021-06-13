@@ -16,6 +16,7 @@ const Home = ({
 }) => {
   const [pageData, setPageData] = useState(page1Data);
   const [title, setTitle] = useState(title1);
+  const [active, setActive] = useState("Page1");
 
   useEffect(() => {
     itemsFetchData("../API/CONTENTLISTINGPAGE-PAGE1.json", "GET", "PAGE1_DATA");
@@ -52,8 +53,11 @@ const Home = ({
       {!searchResults.length && (
         <div className="flex justify-center text-white mr-2 md:mr-7 text-2xl mt-5 ">
           <div
-            className="ml-5 w-10 h-10 bg-black	pt-1 text-center rounded cursor-pointer	 "
+            className={`ml-5 w-10 h-10 bg-black	pt-1 text-center rounded cursor-pointer	 ${
+              active === "Page1" ? " " : "bg-opacity-5"
+            }`}
             onClick={() => {
+              setActive("Page1");
               setPageData(page1Data);
               setTitle(title1);
             }}
@@ -61,8 +65,11 @@ const Home = ({
             1
           </div>
           <div
-            className="ml-5 w-10 h-10 bg-black pt-1 text-center rounded cursor-pointer	"
+            className={`ml-5 w-10 h-10 bg-black	pt-1 text-center rounded cursor-pointer	 ${
+              active === "Page2" ? " " : "bg-opacity-5"
+            }`}
             onClick={() => {
+              setActive("Page2");
               setPageData(page2Data);
               setTitle(title2);
             }}
@@ -70,8 +77,12 @@ const Home = ({
             2
           </div>
           <div
-            className="ml-5 w-10 h-10 bg-black	pt-1 text-center rounded cursor-pointer	"
+            className={`ml-5 w-10 h-10 bg-black	pt-1 text-center rounded cursor-pointer	 ${
+              active === "Page3" ? " " : "bg-opacity-5"
+            }`}
             onClick={() => {
+              setActive("Page3");
+
               setPageData(page3Data);
               setTitle(title3);
             }}
