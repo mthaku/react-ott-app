@@ -15,6 +15,13 @@ export function itemsFetchDataSuccess({ data, title, action }) {
   };
 }
 
+export function setSearchResults(data) {
+  return {
+    type: "SEARCH_RESULTS",
+    data
+  };
+}
+
 /* es6 sintaxis
 export const itemsFetchDataSuccess = (items) => ({
   type: 'IEMS_FETCH_DATA_SUCESS',
